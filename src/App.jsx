@@ -23,13 +23,12 @@ function App() {
       <div className=" m-4 flex justify-center items-center">
         <h1 className="font-bold text-3xl text-white">POKEMON CARDS</h1>
       </div>
-        {console.log(pokemonCard)}
-      <div>
+        
+      <div className="flex items-center  flex-wrap justify-center">
         {
-          pokemonCard.map((pokemon)=>(
-            <div>
-              <img src={pokemon.sprites.front_default} alt="" />
-            </div>
+          pokemonCard.map((poke)=>(
+            <Card  key={poke.id} name={poke.name} image={poke.sprites.front_default} alt_name={poke.name}/>
+            
 
           ))
          
