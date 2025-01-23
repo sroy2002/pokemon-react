@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Patua+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 @tailwind base;
 @tailwind components;
@@ -6,6 +7,11 @@ body{
    
     /* background-color: #323D4A; */
     background-color: #03a9f4;
+}
+.patua-one-regular {
+  font-family: "Patua One", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 .poppins-regular {
     font-family: "Poppins", serif;
