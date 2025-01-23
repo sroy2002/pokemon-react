@@ -8,6 +8,7 @@ function App() {
     const fetchPokemon = async () => {
       const response = await fetch(api_url);
       const data = await response.json();
+      console.log(data);
       const details = await Promise.all(
         data.results.map(async (pokemon) => {
           const pokemonDetails = await fetch(pokemon.url);
@@ -25,7 +26,7 @@ function App() {
         <h1 className="text-3xl text-white poppins-semibold ">POKEMON CARDS</h1>
       </div>
       <div className="w-full">
-        <Search cards={pokemonCard} cardFunc={setPokemonCard}/>
+        <Search cards={pokemonCard} cardFunc={setPokemonCard }/>
       </div>
       <div className="flex items-center  flex-wrap justify-center">
         {pokemonCard.map((poke) => (

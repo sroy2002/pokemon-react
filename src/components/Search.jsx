@@ -9,8 +9,18 @@ export const Search = ({ cards, cardFunc }) => {
     });
     cardFunc(filteredPokemons);
   };
-  const handleCross = () =>{
+  const handleCross = async () =>{
     setSearchWord("");
+    const response = await fetch("https://pokeapi.co/api/v2/pokemon");
+    const data = await response.json();
+    const details = await Promise.all(
+      data.results.map(async (pokemon) => {
+        const pokemonDetails = await fetch(pokemon.url);
+        return pokemonDetails.json();
+      })
+    );
+    cardFunc(details);
+    
   }
   return (
     <div className="flex justify-center items-center my-8 w-full ">
@@ -31,11 +41,14 @@ export const Search = ({ cards, cardFunc }) => {
             size={30}
             onClick={handleSearch}
           />
-           <RxCross1
+          { (searchWord) &&
+
+            <RxCross1
             className=" text-black bg-white absolute right-[4rem] top-1/2 transform -translate-y-1/2 hover:cursor-pointer"
             size={20}
             onClick={handleCross}
-          />
+            />
+          }
         </div>
       </div>
     </div>
